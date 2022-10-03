@@ -29,7 +29,6 @@ if _TPU_AVAILABLE:
 
 @RunIf(tpu=True)
 def test_xla_profiler_instance(tmpdir):
-
     model = BoringModel()
     trainer = Trainer(default_root_dir=tmpdir, fast_dev_run=True, profiler="xla", accelerator="tpu", devices=8)
 
@@ -39,7 +38,6 @@ def test_xla_profiler_instance(tmpdir):
 
 @pytest.mark.skipif(True, reason="XLA Profiler doesn't support Prog. capture yet")
 def test_xla_profiler_prog_capture(tmpdir):
-
     port = xu.get_free_tcp_ports()[0]
     training_started = Event()
 

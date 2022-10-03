@@ -217,7 +217,6 @@ def test_strategy_choice_tpu_strategy(tmpdir):
 
 @RunIf(tpu=True)
 def test_auto_parameters_tying_tpus(tmpdir):
-
     model = WeightSharingModule()
     shared_params = find_shared_parameters(model)
 

@@ -485,8 +485,7 @@ class DataHooks:
         raise MisconfigurationException("`train_dataloader` must be implemented to be used with the Lightning Trainer")
 
     def test_dataloader(self) -> EVAL_DATALOADERS:
-        r"""
-        Implement one or multiple PyTorch DataLoaders for testing.
+        r"""Implement one or multiple PyTorch DataLoaders for testing.
 
         For data processing use the following pattern:
 
@@ -539,8 +538,7 @@ class DataHooks:
         raise MisconfigurationException("`test_dataloader` must be implemented to be used with the Lightning Trainer")
 
     def val_dataloader(self) -> EVAL_DATALOADERS:
-        r"""
-        Implement one or multiple PyTorch DataLoaders for validation.
+        r"""Implement one or multiple PyTorch DataLoaders for validation.
 
         The dataloader you return will not be reloaded unless you set
         :paramref:`~pytorch_lightning.trainer.Trainer.reload_dataloaders_every_n_epochs` to
@@ -590,8 +588,7 @@ class DataHooks:
         raise MisconfigurationException("`val_dataloader` must be implemented to be used with the Lightning Trainer")
 
     def predict_dataloader(self) -> EVAL_DATALOADERS:
-        r"""
-        Implement one or multiple PyTorch DataLoaders for prediction.
+        r"""Implement one or multiple PyTorch DataLoaders for prediction.
 
         It's recommended that all data downloads and preparation happen in :meth:`prepare_data`.
 
@@ -747,9 +744,8 @@ class CheckpointHooks:
     """Hooks to be used with Checkpointing."""
 
     def on_load_checkpoint(self, checkpoint: Dict[str, Any]) -> None:
-        r"""
-        Called by Lightning to restore your model.
-        If you saved something with :meth:`on_save_checkpoint` this is your chance to restore this.
+        r"""Called by Lightning to restore your model. If you saved something with :meth:`on_save_checkpoint` this
+        is your chance to restore this.
 
         Args:
             checkpoint: Loaded checkpoint
@@ -766,9 +762,8 @@ class CheckpointHooks:
         """
 
     def on_save_checkpoint(self, checkpoint: Dict[str, Any]) -> None:
-        r"""
-        Called by Lightning when saving a checkpoint to give you a chance to store anything
-        else you might want to save.
+        r"""Called by Lightning when saving a checkpoint to give you a chance to store anything else you might want
+        to save.
 
         Args:
             checkpoint: The full checkpoint dictionary before it gets dumped to a file.
@@ -784,5 +779,4 @@ class CheckpointHooks:
             Lightning saves all aspects of training (epoch, global step, etc...)
             including amp scaling.
             There is no need for you to store anything about training.
-
         """

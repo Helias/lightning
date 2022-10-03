@@ -590,7 +590,6 @@ def test_strategy_choice_ddp_cpu_slurm(strategy):
 @mock.patch("lightning_lite.accelerators.tpu.TPUAccelerator.is_available", return_value=True)
 @mock.patch.dict(os.environ, {}, clear=True)
 def test_unsupported_tpu_choice(*_):
-
     with pytest.raises(NotImplementedError, match=r"accelerator='tpu', precision=64\)` is not implemented"):
         _Connector(accelerator="tpu", precision=64)
 

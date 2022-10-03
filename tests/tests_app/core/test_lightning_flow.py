@@ -518,7 +518,6 @@ class FlowCounter(LightningFlow):
 
 @pytest.mark.parametrize("runtime_cls", [SingleProcessRuntime, MultiProcessRuntime])
 def test_lightning_flow_counter(runtime_cls, tmpdir):
-
     app = LightningApp(FlowCounter())
     app.checkpointing = True
     runtime_cls(app, start_server=False).dispatch()
@@ -611,7 +610,6 @@ class FlowSchedule(LightningFlow):
 
 
 def test_scheduling_api():
-
     app = LightningApp(FlowSchedule())
     MultiProcessRuntime(app, start_server=True).dispatch()
 

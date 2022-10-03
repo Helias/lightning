@@ -83,6 +83,5 @@ def test_model_parallel_setup_called(tmpdir):
     ["strategy", "strategy_cls"], [("DDP", DDPStrategy), ("DDP_FIND_UNUSED_PARAMETERS_FALSE", DDPStrategy)]
 )
 def test_strategy_str_passed_being_case_insensitive(strategy, strategy_cls):
-
     trainer = Trainer(strategy=strategy)
     assert isinstance(trainer.strategy, strategy_cls)

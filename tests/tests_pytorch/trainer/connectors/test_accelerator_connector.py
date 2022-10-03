@@ -399,7 +399,6 @@ def test_strategy_choice_gpu_instance(strategy_class):
 @RunIf(min_cuda_gpus=2)
 @pytest.mark.parametrize("strategy_class", [DDPSpawnStrategy, DDPStrategy])
 def test_device_type_when_strategy_instance_gpu_passed(strategy_class):
-
     trainer = Trainer(strategy=strategy_class(), accelerator="gpu", devices=2)
     assert isinstance(trainer.strategy, strategy_class)
     assert isinstance(trainer.accelerator, CUDAAccelerator)
@@ -407,7 +406,6 @@ def test_device_type_when_strategy_instance_gpu_passed(strategy_class):
 
 @pytest.mark.parametrize("precision", [1, 12, "invalid"])
 def test_validate_precision_type(precision):
-
     with pytest.raises(MisconfigurationException, match=f"Precision {repr(precision)} is invalid"):
         Trainer(precision=precision)
 
@@ -607,7 +605,6 @@ def test_check_native_fsdp_strategy_and_fallback():
 
 @mock.patch("pytorch_lightning.accelerators.tpu.TPUAccelerator.is_available", return_value=True)
 def test_unsupported_tpu_choice(mock_tpu_acc_avail):
-
     with pytest.raises(MisconfigurationException, match=r"accelerator='tpu', precision=64\)` is not implemented"):
         Trainer(accelerator="tpu", precision=64)
 

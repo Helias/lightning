@@ -40,7 +40,6 @@ from tests_pytorch.helpers.runif import RunIf
     ],
 )
 def test_strategy_registry_with_deepspeed_strategies(strategy_name, init_params):
-
     assert strategy_name in StrategyRegistry
     assert StrategyRegistry[strategy_name]["init_params"] == init_params
     assert StrategyRegistry[strategy_name]["strategy"] == DeepSpeedStrategy
@@ -49,7 +48,6 @@ def test_strategy_registry_with_deepspeed_strategies(strategy_name, init_params)
 @RunIf(deepspeed=True)
 @pytest.mark.parametrize("strategy", ["deepspeed", "deepspeed_stage_2_offload", "deepspeed_stage_3"])
 def test_deepspeed_strategy_registry_with_trainer(tmpdir, strategy):
-
     trainer = Trainer(default_root_dir=tmpdir, strategy=strategy, precision=16)
 
     assert isinstance(trainer.strategy, DeepSpeedStrategy)
@@ -57,7 +55,6 @@ def test_deepspeed_strategy_registry_with_trainer(tmpdir, strategy):
 
 @RunIf(skip_windows=True)
 def test_tpu_spawn_debug_strategy_registry():
-
     strategy = "tpu_spawn_debug"
 
     assert strategy in StrategyRegistry
@@ -70,7 +67,6 @@ def test_tpu_spawn_debug_strategy_registry():
 
 
 def test_fsdp_strategy_registry(tmpdir):
-
     strategy = "fsdp"
 
     assert strategy in StrategyRegistry

@@ -430,7 +430,6 @@ def target():
 
 
 def test_configure_api():
-
     process = Process(target=target)
     process.start()
     time_left = 15

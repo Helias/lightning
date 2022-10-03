@@ -384,7 +384,6 @@ class FlowDict(LightningFlow):
 
 
 def test_dict_with_queues():
-
     app = LightningApp(FlowDict())
     MultiProcessRuntime(app, start_server=False).dispatch()
 
@@ -405,7 +404,6 @@ class FlowList(LightningFlow):
 
 
 def test_list_with_queues():
-
     app = LightningApp(FlowList())
     MultiProcessRuntime(app, start_server=False).dispatch()
 
